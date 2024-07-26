@@ -17,7 +17,7 @@ fi
 # Valet CLI script which is written in PHP. Will use PHP to do it.
 if [ ! -f "$DIR/cli/valet.php" ]
 then
-    DIR=$(php -r "echo realpath('$DIR/../laravel/valet');")
+    DIR=$(php -r "echo realpath('$DIR/../devanoxltd/valet');")
 fi
 
 # Get a command-line executable we can use for php that's 8+; if this

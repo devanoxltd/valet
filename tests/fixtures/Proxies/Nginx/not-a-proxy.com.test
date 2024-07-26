@@ -29,7 +29,7 @@ server {
     access_log off;
     error_log "/home/nobody/.config/valet/Log/not-a-proxy.com.test-error.log";
 
-    error_page 404 "/home/nobody/.composer/vendor/laravel/valet/server.php";
+    error_page 404 "/home/nobody/.composer/vendor/devanoxltd/valet/server.php";
 
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
@@ -69,7 +69,7 @@ server {
     access_log off;
     error_log "/home/nobody/.config/valet/Log/not-a-proxy.com.test-error.log";
 
-    error_page 404 "/home/nobody/.composer/vendor/laravel/valet/server.php";
+    error_page 404 "/home/nobody/.composer/vendor/devanoxltd/valet/server.php";
 
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;

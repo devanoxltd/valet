@@ -36,6 +36,12 @@ class Server
     public static function show404()
     {
         http_response_code(404);
+
+        if (VALET_HOME_PATH && file_exists(VALET_HOME_PATH . '/templates/404.html')) {
+            require VALET_HOME_PATH . '/templates/404.html';
+            exit;
+        }
+
         require __DIR__.'/../../cli/templates/404.html';
         exit;
     }

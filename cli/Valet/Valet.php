@@ -85,7 +85,7 @@ class Valet
 2. Run <info>composer global update</info> to update your globally-installed Composer packages to work with your default PHP.
     NOTE: Composer may have other dependencies for other global apps you have installed, and those may not be compatible with your default PHP.
 3. Finish removing any Composer fragments of Valet:
-    Run <info>composer global remove laravel/valet</info>
+    Run <info>composer global remove devanoxltd/valet</info>
     and then <info>rm '.BREW_PREFIX.'/bin/valet</info> to remove the Valet bin link if it still exists.
 
 Optional:
@@ -114,7 +114,7 @@ Alternatively you can do a search for <comment>@laravel.valet</comment> in Keych
 You may remove your user-specific Valet config files by running:  <comment>rm -rf ~/.config/valet</comment>
 
 <info>3. Remove Valet package</info>
-You can run <comment>composer global remove laravel/valet</comment> to uninstall the Valet package.
+You can run <comment>composer global remove devanoxltd/valet</comment> to uninstall the Valet package.
 
 <info>4. Homebrew Services</info>
 You may remove the core services (php, nginx, dnsmasq) by running: <comment>brew uninstall --force php nginx dnsmasq</comment>

@@ -49,7 +49,7 @@ class Status
                 'check' => function () {
                     return $this->valetInstalled();
                 },
-                'debug' => 'Run `composer require laravel/valet` and `valet install`.',
+                'debug' => 'Run `composer require devanoxltd/valet` and `valet install`.',
             ],
             [
                 'description' => 'Is Valet config valid?',

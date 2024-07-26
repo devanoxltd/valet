@@ -15,6 +15,8 @@ Laravel Valet configures your Mac to always run Nginx in the background when you
 
 In other words, a blazing fast Laravel development environment that uses roughly 7mb of RAM. Valet isn't a complete replacement for Vagrant or Homestead, but provides a great alternative if you want flexible basics, prefer extreme speed, or are working on a machine with a limited amount of RAM.
 
+    This package is a fork of the original Laravel Valet package. It has been modified to use according to the needs of the Devanox team.
+
 ## Official Documentation
 
 Documentation for Valet can be found on the [Laravel website](https://laravel.com/docs/valet).
