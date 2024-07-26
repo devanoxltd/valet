@@ -17,6 +17,9 @@ In other words, a blazing fast Laravel development environment that uses roughly
 
     This package is a fork of the original Laravel Valet package. It has been modified to use according to the needs of the Devanox team.
 
+## Custom 404 Page
+Valet provides a custom 404 page for all sites. You can customize this page by creating a `404.html` file in the `~/.config/valet/templates` directory.
+
 ## Official Documentation
 
 Documentation for Valet can be found on the [Laravel website](https://laravel.com/docs/valet).
