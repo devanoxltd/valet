@@ -140,7 +140,7 @@ class ConfigurationTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
         $config->shouldReceive('writeBaseConfiguration')->once();
         $config->shouldReceive('read')->times(2)->andReturn([]);
         $config->shouldReceive('updateKey')->with('tld', 'test');
-        $config->shouldReceive('updateKey')->with('loopback', '127.0.0.1');
+        $config->shouldReceive('updateKey')->with('loopback', '0.0.0.0');
         $config->ensureBaseConfiguration();
     }
 }

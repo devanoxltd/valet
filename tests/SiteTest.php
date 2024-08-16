@@ -362,13 +362,13 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
                 'site' => 'some-proxy.com',
                 'secured' => ' X',
                 'url' => 'https://some-proxy.com.test',
-                'path' => 'https://127.0.0.1:8443',
+                'path' => 'https://0.0.0.0:8443',
             ],
             'some-other-proxy.com' => [
                 'site' => 'some-other-proxy.com',
                 'secured' => '',
                 'url' => 'http://some-other-proxy.com.test',
-                'path' => 'https://127.0.0.1:8443',
+                'path' => 'https://0.0.0.0:8443',
             ],
         ], $site->proxies()->all());
     }
@@ -391,7 +391,7 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
         $site->assertCertificateNotExists('my-new-proxy.com.test');
         $site->assertNginxNotExists('my-new-proxy.com.test');
 
-        $site->proxyCreate('my-new-proxy.com', 'https://127.0.0.1:9443', true);
+        $site->proxyCreate('my-new-proxy.com', 'https://0.0.0.0:9443', true);
 
         $site->assertCertificateExistsWithCounterValue('my-new-proxy.com.test', 0);
         $site->assertNginxExists('my-new-proxy.com.test');
@@ -401,7 +401,7 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
                 'site' => 'my-new-proxy.com',
                 'secured' => ' X',
                 'url' => 'https://my-new-proxy.com.test',
-                'path' => 'https://127.0.0.1:9443',
+                'path' => 'https://0.0.0.0:9443',
             ],
         ], $site->proxies()->all());
     }
@@ -426,7 +426,7 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
         $site->assertNginxNotExists('my-new-proxy.com.test');
         $site->assertNginxNotExists('my-other-new-proxy.com.test');
 
-        $site->proxyCreate('my-new-proxy.com,my-other-new-proxy.com', 'https://127.0.0.1:9443', true);
+        $site->proxyCreate('my-new-proxy.com,my-other-new-proxy.com', 'https://0.0.0.0:9443', true);
 
         $site->assertCertificateExistsWithCounterValue('my-new-proxy.com.test', 0);
         $site->assertCertificateExistsWithCounterValue('my-other-new-proxy.com.test', 1);
@@ -438,13 +438,13 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
                 'site' => 'my-new-proxy.com',
                 'secured' => ' X',
                 'url' => 'https://my-new-proxy.com.test',
-                'path' => 'https://127.0.0.1:9443',
+                'path' => 'https://0.0.0.0:9443',
             ],
             'my-other-new-proxy.com' => [
                 'site' => 'my-other-new-proxy.com',
                 'secured' => ' X',
                 'url' => 'https://my-other-new-proxy.com.test',
-                'path' => 'https://127.0.0.1:9443',
+                'path' => 'https://0.0.0.0:9443',
             ],
         ], $site->proxies()->all());
     }
@@ -467,7 +467,7 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
         $site->assertCertificateNotExists('my-new-proxy.com.test');
         $site->assertNginxNotExists('my-new-proxy.com.test');
 
-        $site->proxyCreate('my-new-proxy.com', 'http://127.0.0.1:9443', false);
+        $site->proxyCreate('my-new-proxy.com', 'http://0.0.0.0:9443', false);
 
         $site->assertCertificateNotExists('my-new-proxy.com.test');
         $site->assertNginxExists('my-new-proxy.com.test');
@@ -477,7 +477,7 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
                 'site' => 'my-new-proxy.com',
                 'secured' => '',
                 'url' => 'http://my-new-proxy.com.test',
-                'path' => 'http://127.0.0.1:9443',
+                'path' => 'http://0.0.0.0:9443',
             ],
         ], $site->proxies()->all());
     }
@@ -502,7 +502,7 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
         $site->assertNginxNotExists('my-new-proxy.com.test');
         $site->assertNginxNotExists('my-other-new-proxy.com.test');
 
-        $site->proxyCreate('my-new-proxy.com,my-other-new-proxy.com', 'http://127.0.0.1:9443', false);
+        $site->proxyCreate('my-new-proxy.com,my-other-new-proxy.com', 'http://0.0.0.0:9443', false);
 
         $site->assertCertificateNotExists('my-new-proxy.com.test');
         $site->assertCertificateNotExists('my-other-new-proxy.com.test');
@@ -514,13 +514,13 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
                 'site' => 'my-new-proxy.com',
                 'secured' => '',
                 'url' => 'http://my-new-proxy.com.test',
-                'path' => 'http://127.0.0.1:9443',
+                'path' => 'http://0.0.0.0:9443',
             ],
             'my-other-new-proxy.com' => [
                 'site' => 'my-other-new-proxy.com',
                 'secured' => '',
                 'url' => 'http://my-other-new-proxy.com.test',
-                'path' => 'http://127.0.0.1:9443',
+                'path' => 'http://0.0.0.0:9443',
             ],
         ], $site->proxies()->all());
     }
@@ -540,7 +540,7 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
 
         $site->useOutput();
 
-        $site->proxyCreate('my-new-proxy.com', 'https://127.0.0.1:7443', true);
+        $site->proxyCreate('my-new-proxy.com', 'https://0.0.0.0:7443', true);
 
         $site->assertCertificateExistsWithCounterValue('my-new-proxy.com.test', 0);
 
@@ -549,12 +549,12 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
                 'site' => 'my-new-proxy.com',
                 'secured' => ' X',
                 'url' => 'https://my-new-proxy.com.test',
-                'path' => 'https://127.0.0.1:7443',
+                'path' => 'https://0.0.0.0:7443',
             ],
         ], $site->proxies()->all());
 
         // Note: different proxy port
-        $site->proxyCreate('my-new-proxy.com', 'https://127.0.0.1:9443', true);
+        $site->proxyCreate('my-new-proxy.com', 'https://0.0.0.0:9443', true);
 
         // This shows we created a new certificate.
         $site->assertCertificateExistsWithCounterValue('my-new-proxy.com.test', 1);
@@ -564,7 +564,7 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
                 'site' => 'my-new-proxy.com',
                 'secured' => ' X',
                 'url' => 'https://my-new-proxy.com.test',
-                'path' => 'https://127.0.0.1:9443',
+                'path' => 'https://0.0.0.0:9443',
             ],
         ], $site->proxies()->all());
     }
@@ -592,7 +592,7 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
         $site->assertCertificateExistsWithCounterValue('my-new-proxy.com.test', 0);
         $site->assertNginxNotExists('my-new-proxy.com.test');
 
-        $site->proxyCreate('my-new-proxy.com', 'https://127.0.0.1:9443', true);
+        $site->proxyCreate('my-new-proxy.com', 'https://0.0.0.0:9443', true);
 
         // This shows we created a new certificate.
         $site->assertCertificateExistsWithCounterValue('my-new-proxy.com.test', 1);
@@ -604,7 +604,7 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
                 'site' => 'my-new-proxy.com',
                 'secured' => ' X',
                 'url' => 'https://my-new-proxy.com.test',
-                'path' => 'https://127.0.0.1:9443',
+                'path' => 'https://0.0.0.0:9443',
             ],
         ], $site->proxies()->all());
     }
@@ -629,14 +629,14 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
 
         $this->assertEquals([], $site->proxies()->all());
 
-        $site->proxyCreate('my-new-proxy.com', 'https://127.0.0.1:9443', true);
+        $site->proxyCreate('my-new-proxy.com', 'https://0.0.0.0:9443', true);
 
         $this->assertEquals([
             'my-new-proxy.com' => [
                 'site' => 'my-new-proxy.com',
                 'secured' => ' X',
                 'url' => 'https://my-new-proxy.com.test',
-                'path' => 'https://127.0.0.1:9443',
+                'path' => 'https://0.0.0.0:9443',
             ],
         ], $site->proxies()->all());
 
@@ -673,20 +673,20 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
 
         $this->assertEquals([], $site->proxies()->all());
 
-        $site->proxyCreate('my-new-proxy.com,my-other-new-proxy.com', 'https://127.0.0.1:9443', true);
+        $site->proxyCreate('my-new-proxy.com,my-other-new-proxy.com', 'https://0.0.0.0:9443', true);
 
         $this->assertEquals([
             'my-new-proxy.com' => [
                 'site' => 'my-new-proxy.com',
                 'secured' => ' X',
                 'url' => 'https://my-new-proxy.com.test',
-                'path' => 'https://127.0.0.1:9443',
+                'path' => 'https://0.0.0.0:9443',
             ],
             'my-other-new-proxy.com' => [
                 'site' => 'my-other-new-proxy.com',
                 'secured' => ' X',
                 'url' => 'https://my-other-new-proxy.com.test',
-                'path' => 'https://127.0.0.1:9443',
+                'path' => 'https://0.0.0.0:9443',
             ],
         ], $site->proxies()->all());
 
@@ -727,20 +727,20 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
 
         $this->assertEquals([], $site->proxies()->all());
 
-        $site->proxyCreate('my-new-proxy.com,my-other-new-proxy.com', 'https://127.0.0.1:9443', true);
+        $site->proxyCreate('my-new-proxy.com,my-other-new-proxy.com', 'https://0.0.0.0:9443', true);
 
         $this->assertEquals([
             'my-new-proxy.com' => [
                 'site' => 'my-new-proxy.com',
                 'secured' => ' X',
                 'url' => 'https://my-new-proxy.com.test',
-                'path' => 'https://127.0.0.1:9443',
+                'path' => 'https://0.0.0.0:9443',
             ],
             'my-other-new-proxy.com' => [
                 'site' => 'my-other-new-proxy.com',
                 'secured' => ' X',
                 'url' => 'https://my-other-new-proxy.com.test',
-                'path' => 'https://127.0.0.1:9443',
+                'path' => 'https://0.0.0.0:9443',
             ],
         ], $site->proxies()->all());
 
@@ -761,7 +761,7 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
                 'site' => 'my-other-new-proxy.com',
                 'secured' => ' X',
                 'url' => 'https://my-other-new-proxy.com.test',
-                'path' => 'https://127.0.0.1:9443',
+                'path' => 'https://0.0.0.0:9443',
             ],
         ], $site->proxies()->all());
     }

@@ -1,13 +1,13 @@
 # valet stub: secure.proxy.valet.conf
 
 server {
-    listen 127.0.0.1:80;
+    listen 0.0.0.0:80;
     server_name not-a-proxy.com.test www.not-a-proxy.com.test *.not-a-proxy.com.test;
     return 301 https://$host$request_uri;
 }
 
 server {
-    listen 127.0.0.1:443 ssl http2;
+    listen 0.0.0.0:443 ssl http2;
     server_name not-a-proxy.com.test www.not-a-proxy.com.test *.not-a-proxy.com.test;
     root /;
     charset utf-8;
@@ -49,7 +49,7 @@ server {
 }
 
 server {
-    listen 127.0.0.1:60;
+    listen 0.0.0.0:60;
     server_name not-a-proxy.com.test www.not-a-proxy.com.test *.not-a-proxy.com.test;
     root /;
     charset utf-8;
