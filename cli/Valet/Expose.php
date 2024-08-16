@@ -11,7 +11,7 @@ class Expose
 
     public function currentTunnelUrl(?string $domain = null): ?string
     {
-        $endpoint = 'http://127.0.0.1:4040/api/tunnels';
+        $endpoint = 'http://0.0.0.0:4040/api/tunnels';
 
         try {
             $response = retry(20, function () use ($endpoint, $domain) {
