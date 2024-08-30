@@ -9,7 +9,7 @@ class Expose
 {
     public function __construct(public Composer $composer, public CommandLine $cli) {}
 
-    public function currentTunnelUrl(?string $domain = null): ?string
+    public function currentTunnelUrl(string $domain): ?string
     {
         $endpoint = 'http://0.0.0.0:4040/api/tunnels';
 
