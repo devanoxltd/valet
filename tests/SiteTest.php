@@ -362,13 +362,13 @@ class SiteTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
                 'site' => 'some-proxy.com',
                 'secured' => ' X',
                 'url' => 'https://some-proxy.com.test',
-                'path' => 'https://0.0.0.0:8443',
+                'path' => 'https://127.0.0.1:8443',
             ],
             'some-other-proxy.com' => [
                 'site' => 'some-other-proxy.com',
                 'secured' => '',
                 'url' => 'http://some-other-proxy.com.test',
-                'path' => 'https://0.0.0.0:8443',
+                'path' => 'https://127.0.0.1:8443',
             ],
         ], $site->proxies()->all());
     }
