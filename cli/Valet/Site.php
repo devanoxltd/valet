@@ -807,7 +807,7 @@ class Site
      * Build the Nginx proxy config for the specified domain.
      *
      * @param  string  $url  The domain name to serve
-     * @param  string  $host  The URL to proxy to, eg: http://0.0.0.0:8080
+     * @param  string  $host  The URL to proxy to, eg: http://127.0.0.1:8080
      */
     public function proxyCreate(string $url, string $host, bool $secure = false): void
     {

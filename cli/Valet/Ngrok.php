@@ -9,8 +9,8 @@ use GuzzleHttp\Client;
 class Ngrok
 {
     public $tunnelsEndpoints = [
-        'http://0.0.0.0:4040/api/tunnels',
-        'http://0.0.0.0:4041/api/tunnels',
+        'http://127.0.0.1:4040/api/tunnels',
+        'http://127.0.0.1:4041/api/tunnels',
     ];
 
     public function __construct(public CommandLine $cli, public Brew $brew) {}

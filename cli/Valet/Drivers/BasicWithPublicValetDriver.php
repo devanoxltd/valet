@@ -34,7 +34,7 @@ class BasicWithPublicValetDriver extends ValetDriver
     public function frontControllerPath(string $sitePath, string $siteName, string $uri): ?string
     {
         $_SERVER['PHP_SELF'] = $uri;
-        $_SERVER['SERVER_ADDR'] = '0.0.0.0';
+        $_SERVER['SERVER_ADDR'] = '127.0.0.1';
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
 
         $docRoot = $sitePath.'/public';

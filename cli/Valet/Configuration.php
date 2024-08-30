@@ -93,7 +93,7 @@ class Configuration
         }
 
         if (empty($this->read()['loopback'])) {
-            $this->updateKey('loopback', '0.0.0.0');
+            $this->updateKey('loopback', '127.0.0.1');
         }
     }
 
