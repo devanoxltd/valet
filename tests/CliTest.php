@@ -72,7 +72,7 @@ class CliTest extends BaseApplicationTestCase
         $tester->run(['command' => 'loopback']);
         $tester->assertCommandIsSuccessful();
 
-        $this->assertEquals('0.0.0.0', trim($tester->getDisplay()));
+        $this->assertEquals('127.0.0.1', trim($tester->getDisplay()));
     }
 
     public function test_loopback_command_sets_loopback()
@@ -81,14 +81,14 @@ class CliTest extends BaseApplicationTestCase
 
         $config = Mockery::mock(RealConfiguration::class);
         $config->shouldReceive('read')->andReturn(['loopback' => '127.9.9.9'])->once();
-        $config->shouldReceive('updateKey')->with('loopback', '0.0.0.0')->once();
+        $config->shouldReceive('updateKey')->with('loopback', '127.0.0.1')->once();
 
         $dnsmasq = Mockery::mock(DnsMasq::class);
         $dnsmasq->shouldReceive('refreshConfiguration')->once();
 
         $site = Mockery::mock(RealSite::class);
-        $site->shouldReceive('aliasLoopback')->with('127.9.9.9', '0.0.0.0')->once();
-        $site->shouldReceive('resecureForNewConfiguration')->with(['loopback' => '127.9.9.9'], ['loopback' => '0.0.0.0'])->once();
+        $site->shouldReceive('aliasLoopback')->with('127.9.9.9', '127.0.0.1')->once();
+        $site->shouldReceive('resecureForNewConfiguration')->with(['loopback' => '127.9.9.9'], ['loopback' => '127.0.0.1'])->once();
 
         $phpfpm = Mockery::mock(PhpFpm::class);
         $phpfpm->shouldReceive('restart')->once();
@@ -103,9 +103,9 @@ class CliTest extends BaseApplicationTestCase
         swap(PhpFpm::class, $phpfpm);
         swap(Nginx::class, $nginx);
 
-        $tester->run(['command' => 'loopback', 'loopback' => '0.0.0.0']);
+        $tester->run(['command' => 'loopback', 'loopback' => '127.0.0.1']);
         $tester->assertCommandIsSuccessful();
-        $this->assertStringContainsString('Your Valet loopback address has been updated to [0.0.0.0]', $tester->getDisplay());
+        $this->assertStringContainsString('Your Valet loopback address has been updated to [127.0.0.1]', $tester->getDisplay());
     }
 
     public function test_park_command()
@@ -471,7 +471,7 @@ class CliTest extends BaseApplicationTestCase
         [$app, $tester] = $this->appAndTester();
 
         $site = Mockery::mock(RealSite::class);
-        $site->shouldReceive('proxyCreate')->with('elasticsearch', 'http://0.0.0.0:9200', false)->once();
+        $site->shouldReceive('proxyCreate')->with('elasticsearch', 'http://127.0.0.1:9200', false)->once();
 
         $nginx = Mockery::mock(Nginx::class);
         $nginx->shouldReceive('restart')->once();
@@ -479,7 +479,7 @@ class CliTest extends BaseApplicationTestCase
         swap(Nginx::class, $nginx);
         swap(RealSite::class, $site);
 
-        $tester->run(['command' => 'proxy', 'domain' => 'elasticsearch', 'host' => 'http://0.0.0.0:9200']);
+        $tester->run(['command' => 'proxy', 'domain' => 'elasticsearch', 'host' => 'http://127.0.0.1:9200']);
         $tester->assertCommandIsSuccessful();
     }
 
@@ -488,7 +488,7 @@ class CliTest extends BaseApplicationTestCase
         [$app, $tester] = $this->appAndTester();
 
         $site = Mockery::mock(RealSite::class);
-        $site->shouldReceive('proxyCreate')->with('my-app,subdomain.my-app', 'http://0.0.0.0:8000', false)->once();
+        $site->shouldReceive('proxyCreate')->with('my-app,subdomain.my-app', 'http://127.0.0.1:8000', false)->once();
 
         $nginx = Mockery::mock(Nginx::class);
         $nginx->shouldReceive('restart')->once();
@@ -496,7 +496,7 @@ class CliTest extends BaseApplicationTestCase
         swap(Nginx::class, $nginx);
         swap(RealSite::class, $site);
 
-        $tester->run(['command' => 'proxy', 'domain' => 'my-app,subdomain.my-app', 'host' => 'http://0.0.0.0:8000']);
+        $tester->run(['command' => 'proxy', 'domain' => 'my-app,subdomain.my-app', 'host' => 'http://127.0.0.1:8000']);
         $tester->assertCommandIsSuccessful();
     }
 
@@ -523,7 +523,7 @@ class CliTest extends BaseApplicationTestCase
 
         $site = Mockery::mock(RealSite::class);
         $site->shouldReceive('proxies')->andReturn(collect([
-            ['site' => 'elasticsearch', 'secured' => 'X', 'url' => 'https://elasticsearch.test/', 'host' => 'http://0.0.0.0:9200'],
+            ['site' => 'elasticsearch', 'secured' => 'X', 'url' => 'https://elasticsearch.test/', 'host' => 'http://127.0.0.1:9200'],
         ]));
 
         swap(RealSite::class, $site);

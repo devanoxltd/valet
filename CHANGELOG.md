@@ -132,7 +132,7 @@ Welcome to Valet v4! This release is mostly about re-writing the internals so th
 
 ### Fixed
 
-- Make 0.0.0.0 SERVER_ADDR definition only if null by @mattstauffer in https://github.com/laravel/valet/pull/1356
+- Make 127.0.0.1 SERVER_ADDR definition only if null by @mattstauffer in https://github.com/laravel/valet/pull/1356
 
 ## [v3.3.0](https://github.com/laravel/valet/compare/v3.2.2...v3.3.0) - 2023-01-17
 

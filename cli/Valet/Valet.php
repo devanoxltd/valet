@@ -93,7 +93,7 @@ Optional:
 - <info>brew doctor</info> can indicate if there might be any broken things left behind.
 - <info>brew cleanup</info> can purge old cached Homebrew downloads.
 
-If you had customized your Mac DNS settings in System Preferences->Network, you will need to remove 0.0.0.0 from that list.
+If you had customized your Mac DNS settings in System Preferences->Network, you will need to remove 127.0.0.1 from that list.
 
 You may also want to open Keychain Access and search for <comment>valet</comment> to remove any leftover trust certificates.';
     }
@@ -123,7 +123,7 @@ You can then remove selected leftover configurations for these services manually
 
 <error>BEWARE:</error> Uninstalling PHP via Homebrew will leave your Mac with its original PHP version, which may not be compatible with other Composer dependencies you have installed. As a result, you may get unexpected errors.
 
-If you have customized your Mac DNS settings in System Preferences->Network, you may need to add or remove 0.0.0.0 from the top of that list.
+If you have customized your Mac DNS settings in System Preferences->Network, you may need to add or remove 127.0.0.1 from the top of that list.
 
 <info>5. GENERAL TROUBLESHOOTING</info>
 If your reasons for considering an uninstall are more for troubleshooting purposes, consider running <comment>brew doctor</comment> and/or <comment>brew cleanup</comment> to see if any problems exist there.
