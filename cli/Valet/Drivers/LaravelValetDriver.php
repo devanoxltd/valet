@@ -22,6 +22,10 @@ class LaravelValetDriver extends ValetDriver
         if (isset($_SERVER['HTTP_X_FORWARDED_HOST'])) {
             $_SERVER['HTTP_HOST'] = $_SERVER['HTTP_X_FORWARDED_HOST'];
         }
+
+        $_SERVER['PHP_SELF'] = $uri;
+        $_SERVER['SERVER_ADDR'] = $_SERVER['SERVER_ADDR'] ?? '127.0.0.1';
+        $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
     }
 
     /**
