@@ -26,6 +26,21 @@ class LaravelValetDriver extends ValetDriver
         $_SERVER['PHP_SELF'] = $uri;
         $_SERVER['SERVER_ADDR'] = $_SERVER['SERVER_ADDR'] ?? '127.0.0.1';
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
+        $_SERVER['REMOTE_ADDR'] = $this->remoteIP();
+    }
+
+    public function remoteIP()
+    {
+        if ($_SERVER['HTTP_X_REAL_IP'] ?? false) {
+            return $_SERVER['HTTP_X_REAL_IP'];
+        }
+
+        if ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? false) {
+            return explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0] ?? $_SERVER['REMOTE_ADDR'];
+        }
+
+        return $_SERVER['REMOTE_ADDR'];
+
     }
 
     /**
