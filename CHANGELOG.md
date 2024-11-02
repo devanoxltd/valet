@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/valet/compare/v4.8.0...master)
+## [Unreleased](https://github.com/laravel/valet/compare/v4.8.01...master)
+
+## [v4.8.01](https://github.com/laravel/valet/compare/v4.8.0...v4.8.01) - 2024-11-02
+
+**Full Changelog**: https://github.com/devanoxltd/valet/compare/v4.8.0...v4.8.01
 
 ## [v4.8.0](https://github.com/laravel/valet/compare/v4.7.1...v4.8.0) - 2024-09-03
 
