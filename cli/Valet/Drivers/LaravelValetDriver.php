@@ -31,6 +31,10 @@ class LaravelValetDriver extends ValetDriver
 
     public function remoteIP()
     {
+        if ($_SERVER['HTTP_CF_CONNECTING_IP'] ?? false) {
+            return $_SERVER['HTTP_CF_CONNECTING_IP'];
+        }
+
         if ($_SERVER['HTTP_X_REAL_IP'] ?? false) {
             return $_SERVER['HTTP_X_REAL_IP'];
         }
