@@ -6,12 +6,13 @@ use Valet\CommandLine;
 use Valet\Configuration;
 use Valet\DnsMasq;
 use Valet\Filesystem;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 use function Valet\resolve;
 use function Valet\swap;
 use function Valet\user;
 
-class DnsMasqTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
+class DnsMasqTest extends TestCase
 {
     use UsesNullWriter;
 
@@ -51,7 +52,7 @@ class DnsMasqTest extends Yoast\PHPUnitPolyfills\TestCases\TestCase
         $dnsMasq->install('test');
 
         $this->assertSame('nameserver '.VALET_LOOPBACK.PHP_EOL, file_get_contents(__DIR__.'/output/resolver/test'));
-        $this->assertSame('address=/.test/'.VALET_LOOPBACK.PHP_EOL.'listen-address='.VALET_LOOPBACK.PHP_EOL, file_get_contents(__DIR__.'/output/tld-test.conf'));
+        $this->assertSame('address=/.test/'.VALET_LOOPBACK.PHP_EOL.'address=/.test/::1'.PHP_EOL.'listen-address='.VALET_LOOPBACK.PHP_EOL, file_get_contents(__DIR__.'/output/tld-test.conf'));
         $this->assertSame('test-contents
 '.PHP_EOL.'conf-dir='.BREW_PREFIX.'/etc/dnsmasq.d/,*.conf'.PHP_EOL,
             file_get_contents($dnsMasq->dnsmasqMasterConfigFile)

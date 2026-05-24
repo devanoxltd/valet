@@ -33,7 +33,7 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
  */
 Container::setInstance(new Container);
 
-$version = '4.11.1';
+$version = '4.12.0';
 
 $app = new Application('Laravel Valet', $version);
 
@@ -392,7 +392,7 @@ if (is_dir(VALET_HOME_PATH)) {
         if ($tool && in_array($tool, $share_tools) && class_exists($tool)) {
             try {
                 output($tool::currentTunnelUrl(Site::domain($domain)));
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 warning($e->getMessage());
             }
         } else {

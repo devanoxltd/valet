@@ -1,7 +1,11 @@
 {
     "name": "devanoxltd/valet",
     "description": "A more enjoyable local development experience for Mac.",
-    "keywords": ["laravel", "zonda", "wwdhhd"],
+    "keywords": [
+        "laravel",
+        "zonda",
+        "wwdhhd"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -36,8 +40,8 @@
     },
     "require": {
         "php": "^8.4",
-        "illuminate/collections": "^11.0|^12.0",
-        "illuminate/container": "^11.0|^12.0",
+        "illuminate/collections": "^11.0|^12.0|^13.0",
+        "illuminate/container": "^11.0|^12.0|^13.0",
         "mnapoli/silly": "^1.9",
         "symfony/console": "^7.0|^8.0",
         "symfony/process": "^8.0",
