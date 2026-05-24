@@ -485,29 +485,41 @@ if (is_dir(VALET_HOME_PATH)) {
                 PhpFpm::restart();
                 Nginx::restart();
 
-                return info('Valet services have been restarted.');
+                info('Valet services have been restarted.');
+
+                return Command::SUCCESS;
             case 'dnsmasq':
                 DnsMasq::restart();
 
-                return info('dnsmasq has been restarted.');
+                info('dnsmasq has been restarted.');
+
+                return Command::SUCCESS;
             case 'nginx':
                 Nginx::restart();
 
-                return info('Nginx has been restarted.');
+                info('Nginx has been restarted.');
+
+                return Command::SUCCESS;
             case 'php':
                 PhpFpm::restart();
 
-                return info('PHP has been restarted.');
+                info('PHP has been restarted.');
+
+                return Command::SUCCESS;
         }
 
         // Handle restarting specific PHP version (e.g. `valet restart php@8.2`)
         if (str_contains($service, 'php')) {
             PhpFpm::restart($normalized = PhpFpm::normalizePhpVersion($service));
 
-            return info($normalized.' has been restarted.');
+            info($normalized.' has been restarted.');
+
+            return Command::SUCCESS;
         }
 
-        return warning(sprintf('Invalid valet service name [%s]', $service));
+        warning(sprintf('Invalid valet service name [%s]', $service));
+
+        return Command::FAILURE;
     })->descriptions('Restart the Valet services');
 
     /**
