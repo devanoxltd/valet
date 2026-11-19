@@ -134,7 +134,7 @@ class ServerTest extends TestCase
     {
         $response = $this->serve('site.test', '/%2e%2e/%2e%2e/%2e%2e/outside/file.txt/');
 
-        $this->assertStringContainsString('404 - Not Found', $response);
+        $this->assertStringContainsString('Page not found.', $response);
         $this->assertStringNotContainsString('OUTSIDE THE SITE', $response);
     }
 

@@ -956,7 +956,7 @@ class CliTest extends BaseApplicationTestCase
         [$app, $tester] = $this->appAndTester();
 
         $tester->run(['command' => 'stop', 'service' => 'not-real-services']);
-        $tester->assertCommandIsSuccessful();
+        $this->assertSame(1, $tester->getStatusCode());
 
         $this->assertStringContainsString('Invalid valet service', $tester->getDisplay());
     }

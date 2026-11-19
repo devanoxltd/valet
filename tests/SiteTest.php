@@ -990,7 +990,7 @@ class SiteTest extends TestCase
                     return preg_match('/^# '.ISOLATED_PHP_VERSION.'=php@8.0/', $argument)
                         && preg_match('#fastcgi_pass "unix:.*/valet80.sock#', $argument)
                         && strpos($argument, 'server_name site2.test www.site2.test *.site2.test;') !== false
-                        && strpos($argument, 'listen 127.0.0.1:80;') !== false
+                        && strpos($argument, 'listen 0.0.0.0:80;') !== false
                         && strpos($argument, 'listen [::1]:80;') !== false;
                 }),
             ]);
@@ -1023,7 +1023,7 @@ class SiteTest extends TestCase
         $contents = file_get_contents(__DIR__.'/../cli/stubs/secure.proxy.valet.conf');
 
         // The port-60 server block is what `valet share` tunnels to.
-        $this->assertStringContainsString('listen 127.0.0.1:60;', $contents);
+        $this->assertStringContainsString('listen 0.0.0.0:60;', $contents);
         $this->assertStringContainsString('listen [::1]:60;', $contents);
 
         // A custom loopback must activate the port-60 listener too.
